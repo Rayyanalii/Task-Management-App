@@ -12,6 +12,6 @@ const UserSchema = new Schema<UserInterface>({
   password: { type: String, required: true },
 });
 
-const User = mongoose.model<UserInterface>("User", UserSchema);
+const User = mongoose.model<UserInterface>("Users", UserSchema);
 
 export default User;
