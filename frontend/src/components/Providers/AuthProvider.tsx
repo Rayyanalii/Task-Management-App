@@ -1,6 +1,6 @@
 import React, { useState, ReactNode } from "react";
-import { setAuthToken } from "../config/api";
-import { AuthContext } from "../contexts/AuthContext";
+import { setAuthToken } from "../../config/api";
+import { AuthContext } from "../../contexts/AuthContext";
 
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({
   children,

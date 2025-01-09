@@ -4,8 +4,9 @@ import jwt from "jsonwebtoken";
 import User from "../models/User";
 
 export const register = async (req: Request, res: any) => {
-  const { name, email, password } = req.body;
-  if (!name || !email || !password)
+  const { username, email, password } = req.body;
+
+  if (!username || !email || !password)
     return res.status(400).json({ message: "All fields are required" });
   try {
     const userExists = await User.findOne({ email });
@@ -13,7 +14,12 @@ export const register = async (req: Request, res: any) => {
       return res.status(400).json({ message: "User already exists" });
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser = new User({ name, email, password: hashedPassword });
+
+    const newUser = new User({
+      name: username,
+      email,
+      password: hashedPassword,
+    });
 
     await newUser.save();
 
@@ -38,6 +44,7 @@ export const login = async (req: Request, res: any) => {
       process.env.JWT_SECRET || "veryverysecretkey",
       { expiresIn: "1h" }
     );
+    console.log("🚀 ~ login ~ token:", token);
     res.json({ token });
   } catch (error) {
     res.status(500).json({ message: "Server error" });
