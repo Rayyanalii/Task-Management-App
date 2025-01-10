@@ -78,7 +78,7 @@ const Navbar = () => {
               Made by{" "}
               <HoverCard.Root>
                 <HoverCard.Trigger>
-                  <Link href="https://twitter.com/radix_ui" target="_blank">
+                  <Link href="https://github.com/Rayyanalii" target="_blank">
                     @Rayyanalii
                   </Link>
                 </HoverCard.Trigger>
@@ -88,18 +88,16 @@ const Navbar = () => {
                       size="3"
                       fallback="R"
                       radius="full"
-                      src="https://pbs.twimg.com/profile_images/1337055608613253126/r_eiMp2H_400x400.png"
+                      src="/connor.png"
                     />
                     <Box>
                       <Heading size="3" as="h3">
                         Rayyan Ali
                       </Heading>
-                      <Text as="div" size="2" color="gray" mb="2">
-                        @rayyanalii
-                      </Text>
+
                       <Text as="div" size="2">
-                        React components, icons, and colors for building
-                        high-quality, accessible UI.
+                        A 3rd Year Software Engineering Student; Willing to
+                        learn, adapt and provide software solutions.
                       </Text>
                     </Box>
                   </Flex>

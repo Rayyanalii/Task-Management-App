@@ -44,7 +44,6 @@ export const login = async (req: Request, res: any) => {
       process.env.JWT_SECRET || "veryverysecretkey",
       { expiresIn: "1h" }
     );
-    console.log("🚀 ~ login ~ token:", token);
     res.json({ token });
   } catch (error) {
     res.status(500).json({ message: "Server error" });
