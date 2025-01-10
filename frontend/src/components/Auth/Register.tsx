@@ -1,10 +1,12 @@
 import { Button, Checkbox, Heading, Text, TextField } from "@radix-ui/themes";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import API from "../../config/api";
 import { useNavigate } from "react-router-dom";
+import { DarkModeContext } from "../../contexts/DarkModeContext";
 
 const Register = () => {
+  const { isDarkMode } = useContext(DarkModeContext);
   const [isRegistering, setIsRegistering] = useState(false);
   const [formData, setFormData] = useState({
     username: "",
@@ -50,7 +52,11 @@ const Register = () => {
   return (
     <>
       <div className="flex flex-col items-center ">
-        <div className="bg-zinc-900 mt-28 rounded-lg text-center flex">
+        <div
+          className={`${
+            !isDarkMode ? "bg-gray-100" : "bg-zinc-900"
+          }  mt-28 rounded-lg text-center flex`}
+        >
           <div className="px-10 py-10 flex flex-col  min-w-[35rem]">
             <div className="mb-6">
               <Heading>Register</Heading>
@@ -103,7 +109,7 @@ const Register = () => {
                 </div>
               </form>
               <div className="mt-6">
-                <Text className="text-gray-300">
+                <Text>
                   Already have an account?{" "}
                   <Link to="/login" className="text-blue-500">
                     Login

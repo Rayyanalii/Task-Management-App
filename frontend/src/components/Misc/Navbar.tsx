@@ -31,7 +31,11 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="h-16 px-10 flex items-center justify-end">
+      <div
+        className={`${
+          !isDarkMode ? "bg-gray-100" : "bg-zinc-900"
+        } h-16 px-10 flex items-center justify-end`}
+      >
         <div className="flex gap-10 items-center">
           {localStorage.getItem("token") && (
             <div>

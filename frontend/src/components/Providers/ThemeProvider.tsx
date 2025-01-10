@@ -1,21 +1,12 @@
 import { Theme } from "@radix-ui/themes";
 import App from "../../App";
-import { useEffect, useState } from "react";
+import { useContext } from "react";
+import { DarkModeContext } from "../../contexts/DarkModeContext";
 
 export const ThemeProvider = () => {
-  const [theme, setTheme] = useState<"light" | "dark">(
-    localStorage.getItem("darkmode") === "true" ? "dark" : "light"
-  );
+  const { isDarkMode } = useContext(DarkModeContext);
 
-  useEffect(() => {
-    const handleStorageChange = () => {
-      setTheme(localStorage.getItem("darkmode") === "true" ? "dark" : "light");
-    };
-
-    window.addEventListener("storage", handleStorageChange);
-
-    return () => window.removeEventListener("storage", handleStorageChange);
-  }, []);
+  const theme = isDarkMode ? "dark" : "light";
 
   return (
     <Theme appearance={theme}>
