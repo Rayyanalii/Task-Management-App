@@ -4,10 +4,25 @@ import cors from "cors";
 import mongoose from "mongoose";
 import authRoutes from "./routes/AuthRoutes";
 import taskRoutes from "./routes/TaskRoutes";
+import { createClient } from "redis";
 
 dotenv.config();
 
 const app = express();
+export const redisClient = createClient();
+
+redisClient.on("connect", () => {
+  console.log("Connected to Redis for caching");
+});
+
+(async () => {
+  try {
+    await redisClient.connect();
+  } catch (error) {
+    console.error("Redis connection error:", error);
+  }
+})();
+
 app.use(cors());
 app.use(express.json());
 app.use("/api/auth", authRoutes);
